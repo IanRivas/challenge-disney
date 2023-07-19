@@ -1,0 +1,27 @@
+
+<div [formGroup]="formGroup">
+    <h3>{{question.importantIndicator}} {{question.displayText}}</h3>
+    <div *ngIf="question.type === 'radio'">
+        <mat-radio-group>
+            <ng-container *ngFor="let choice of question.choiceOptions">
+                <mat-radio-button (change)="formGroup.patchValue(choice)" [value]="choice">{{choice.label}}</mat-radio-button>
+            </ng-container>
+        </mat-radio-group>
+    </div>
+    <div *ngIf="question.type === 'three_buttons'">
+        <ng-container *ngFor="let choice of question.choiceOptions">
+            <button mat-button (click)="formGroup.patchValue(choice)">{{choice.label}}</button>
+        </ng-container>
+    </div>
+    <div *ngIf="question.type === 'dropdown'">
+        <mat-form-field appearance="outline">
+            <mat-label>Select an option</mat-label>
+            <mat-select (valueChange)="selectedChoiceFn($event)">
+                <ng-container *ngFor="let choice of question.choiceOptions">
+                    <mat-option [value]="choice">{{choice.label}}</mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+    

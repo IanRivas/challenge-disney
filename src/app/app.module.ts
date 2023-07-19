@@ -1,22 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { QuestionComponent } from './question/question.component';
+
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
