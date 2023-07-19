@@ -2,70 +2,30 @@
   <h1 class="title">TEST APP</h1>
   <form [formGroup]="sectionsForm">
     <mat-accordion class="accordion">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="title-number">1</div>
-            <div class="title-container">
-              <h2>SECTION 1</h2>
-              <span>Total questions: 7, answered: 4</span>
+      <ng-container *ngFor="let s of sections; let i = index">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="title-number">{{s.numberLevel}}</div>
+              <div class="title-container">
+                <h2>{{s.name}}</h2>
+                <span>Total questions: {{questions[i].length}}, answered: {{getAnswered(s.numberLevel)}}</span>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div [formArrayName]="getKeySection(s.name)">
+            <div *ngFor="let question of questions[i]; let j = index">
+              <app-question 
+              [question]="question"
+              [formArray]="getSection(s.numberLevel)"
+              [formGroup]="getFormGroup(getSection(s.numberLevel),j)" 
+              [section]="s.numberLevel"
+              ></app-question>
             </div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div formArrayName="section1">
-          <div *ngFor="let question of questions1; let i = index">
-            <app-question 
-            [question]="question"
-            [formArray]="section1"
-            [formGroup]="getFormGroup(section1,i)" 
-            section="1"
-            ></app-question>
           </div>
-        </div>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="title-number">2</div>
-            <div class="title-container">
-              <h2>SECTION 2</h2>
-              <span>Total questions: 7, answered: 4</span>
-            </div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-radio-group>
-          <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
-          <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
-          <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
-        </mat-radio-group>
-        <button mat-raised-button color="primary">HOLA</button>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="title-number">3</div>
-            <div class="title-container">
-              <h2>SECTION 3</h2>
-              <span>Total questions: 7, answered: 4</span>
-            </div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae et nostrum, totam aperiam tempora eveniet veritatis iste fuga illum maxime cumque recusandae quod dolores tempore debitis suscipit eum, vitae inventore.</p>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="title-number">4</div>
-            <div class="title-container">
-              <h2>SECTION 4</h2>
-              <span>Total questions: 7, answered: 4</span>
-            </div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae et nostrum, totam aperiam tempora eveniet veritatis iste fuga illum maxime cumque recusandae quod dolores tempore debitis suscipit eum, vitae inventore.</p>
-      </mat-expansion-panel>
+        </mat-expansion-panel>
+    </ng-container>
     </mat-accordion>
   </form>
-
 </main>
 

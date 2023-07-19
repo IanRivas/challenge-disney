@@ -1,12 +1,14 @@
 $principal: #444444;
 $secundary: #7F8AA0;
 $background: #F0F0F0;
+$border: #DCDCDC;
 
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 50px;
 }
 
 .title {
@@ -23,6 +25,16 @@ main {
     place-items: center;
     margin: 40px 10px 0px;
     gap: 30px;
+    & .mat-expansion-panel {
+        width: 100%;
+        ::ng-deep {
+            & .mat-expansion-panel-body {
+                background-color: $background;
+                padding-top: 24px;
+                padding-bottom: 0px;
+            }
+        }
+    }
     & .mat-expansion-panel-header {
         height: 70px;
         padding: 0px;
@@ -64,6 +76,4 @@ main {
             font-size: 1rem;
         }
     }
-    
-    
 }

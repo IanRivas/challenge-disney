@@ -1,0 +1,19 @@
+.question-container{
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 24px;
+    & > h4, h3 {
+        font-weight: bold;
+    }
+    & > h4 {
+        margin-bottom: 0;
+    }
+    & .flex-column {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    & .dropdown {
+        width: 100%;
+    }
+}
